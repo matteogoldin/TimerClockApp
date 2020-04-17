@@ -3,8 +3,7 @@
 #include "Stopwatch.cpp"
 #include "Clock.cpp"
 
-
-int main() {
+/*int main() {
     Stopwatch* stopwatch=new Stopwatch();
     Clock* clock=new Clock();
     //clock->startClock24h();
@@ -14,3 +13,4 @@ int main() {
 
     return 0;
 }
+ */

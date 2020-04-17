@@ -26,7 +26,7 @@ void Stopwatch::startStopwatch(){
         if(hours>=24)
             resetStopwatch();
 
-        std::cout<<Stopwatch::hours<<":"<<Stopwatch::minutes<<":"<<Stopwatch::seconds<<"\n";
+        //std::cout<<Stopwatch::hours<<":"<<Stopwatch::minutes<<":"<<Stopwatch::seconds<<"\n";
 
         //update();           //funzione observer da definire
     }
