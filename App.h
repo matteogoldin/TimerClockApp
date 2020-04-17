@@ -21,6 +21,5 @@ public:
     bool OnInit();
 };
 
-DECLARE_APP(App);
 
 #endif //TIMERCLOCKAPP_APP_H

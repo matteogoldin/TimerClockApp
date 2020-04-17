@@ -6,6 +6,6 @@ set(CMAKE_CXX_STANDARD 14)
 find_package(wxWidgets REQUIRED net gl core base)
 include(${wxWidgets_USE_FILE})
 
-add_executable(TimerClockApp App.cpp)
+add_executable(TimerClockApp App.cpp App.h Frame.cpp Frame.h)
 
 target_link_libraries(TimerClockApp ${wxWidgets_LIBRARIES})
