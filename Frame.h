@@ -12,6 +12,9 @@
 
 
 class Frame: public wxFrame {
+private:
+    wxButton* timerButton;
+    wxButton* clockButton;
 public:
     Frame();
     ~Frame();

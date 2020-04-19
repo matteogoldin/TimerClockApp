@@ -1,11 +1,11 @@
 //
-// Created by matte on 10/10/2019.
+// Created by matte on 14/04/2020.
 //
 
 #include "Clock.h"
 
 Clock::Clock() {
-    char *buffer=new char[80];
+    char *buffer=new char[80];//cambia in stringa
     currentTime=0;
     stop=false;
 }
@@ -34,4 +34,8 @@ void Clock::startClock12h(){
 
 void Clock::stopClock(){
     stop=true;
+}
+
+time_t Clock::getCurrentTime() const {
+    return currentTime;
 }

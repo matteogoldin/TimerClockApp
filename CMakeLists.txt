@@ -1,10 +1,16 @@
 cmake_minimum_required(VERSION 3.12)
-project(TimerClock)
+project(TimerClockApp)
 
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 14)
+
 find_package(wxWidgets REQUIRED net gl core base)
 include(${wxWidgets_USE_FILE})
 
-add_executable(TimerClock main.cpp)
+set(SOURCE_FILES App.cpp App.h Frame.cpp Frame.h Clock.cpp Clock.h Stopwatch.cpp Stopwatch.h ) #aggiungere i file sorgente
 
-target_link_libraries(TimerClock ${wxWidgets_LIBRARIES})
+add_executable(TimerClockApp ${SOURCE_FILES})
+add_subdirectory(test)
+add_library(core ${SOURCE_FILES})
+
+target_link_libraries(TimerClockApp ${wxWidgets_LIBRARIES} core)
+

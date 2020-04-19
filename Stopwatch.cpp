@@ -1,5 +1,5 @@
 //
-// Created by matte on 07/10/2019.
+// Created by matte on 14/04/2020.
 //
 
 #include "Stopwatch.h"
@@ -8,6 +8,7 @@ Stopwatch::~Stopwatch() {}
 void Stopwatch::startStopwatch(){
     stop=false;
     start= std::clock();
+    //callback ogni secondo
     while(!stop){               //not solo perché ha più senso che si fermi quando stop==true
         duration=( std::clock() - start) / (double) CLOCKS_PER_SEC;
         seconds=duration-minutes*60-hours*60*60;
@@ -26,7 +27,7 @@ void Stopwatch::startStopwatch(){
         if(hours>=24)
             resetStopwatch();
 
-        //std::cout<<Stopwatch::hours<<":"<<Stopwatch::minutes<<":"<<Stopwatch::seconds<<"\n";ù
+        //std::cout<<Stopwatch::hours<<":"<<Stopwatch::minutes<<":"<<Stopwatch::seconds<<"\n";
 
         //update();           //funzione observer da definire
     }

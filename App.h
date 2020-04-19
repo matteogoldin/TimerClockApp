@@ -2,14 +2,24 @@
 // Created by matte on 14/04/2020.
 //
 
-#ifndef TIMERCLOCK_APP_H
-#define TIMERCLOCK_APP_H
+#ifndef TIMERCLOCKAPP_APP_H
+#define TIMERCLOCKAPP_APP_H
+#include <wx/wxprec.h>
+#ifndef WX_PRECOMP
+#include <wx/wx.h>
+#endif
+
+#include "Frame.h"
 
 
-class App {
-    public:
-        virtual bool OnInit();
+class App : public wxApp{
+private:
+    Frame* frame1= nullptr;
+public:
+    App();
+    ~App();
+    bool OnInit();
 };
 
 
-#endif //TIMERCLOCK_APP_H
+#endif //TIMERCLOCKAPP_APP_H

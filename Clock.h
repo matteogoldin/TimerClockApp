@@ -1,9 +1,10 @@
 //
-// Created by matte on 10/10/2019.
+// Created by matte on 14/04/2020.
 //
 
-#ifndef UNTITLED71_CLOCK_H
-#define UNTITLED71_CLOCK_H
+#ifndef TIMERCLOCKAPP_CLOCK_H
+#define TIMERCLOCKAPP_CLOCK_H
+
 
 #include <ctime>
 #include <iostream>
@@ -14,10 +15,11 @@ public:
     ~Clock();
 
     void startClock24h();
-
     void startClock12h();
-
     void stopClock();
+
+    time_t getCurrentTime() const;
+
 private:
     char *buffer;
     time_t currentTime;
@@ -25,4 +27,5 @@ private:
 };
 
 
-#endif //UNTITLED71_CLOCK_H
+
+#endif //TIMERCLOCKAPP_CLOCK_H

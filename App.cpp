@@ -3,14 +3,18 @@
 //
 
 #include "App.h"
-#include <wx/wxprec.h>
-#ifndef WX_PRECOMP
-#include <wx/wx.h>
-#endif
-
 wxIMPLEMENT_APP(App);
 
-class App: public wxApp{};
+App::App(){
 
-~App
+}
 
+App::~App() {
+
+}
+
+bool App::OnInit() {
+    frame1=new Frame();
+    frame1->Show();
+    return true;
+}
