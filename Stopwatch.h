@@ -1,11 +1,9 @@
 //
-// Created by matte on 14/04/2020.
+// Created by matte on 07/10/2019.
 //
 
-#ifndef TIMERCLOCKAPP_STOPWATCH_H
-#define TIMERCLOCKAPP_STOPWATCH_H
-
-
+#ifndef TIMERCLOCK_STOPWATCH_H
+#define _STOPWATCH_H
 #include <cstdio>
 #include <ctime>
 #include <iostream>
@@ -38,6 +36,4 @@ private:
 
 };
 
-
-
-#endif //TIMERCLOCKAPP_STOPWATCH_H
+#endif //UNTITLED71_STOPWATCH_H

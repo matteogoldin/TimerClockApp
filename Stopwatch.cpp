@@ -1,5 +1,5 @@
 //
-// Created by matte on 14/04/2020.
+// Created by matte on 07/10/2019.
 //
 
 #include "Stopwatch.h"
@@ -26,7 +26,7 @@ void Stopwatch::startStopwatch(){
         if(hours>=24)
             resetStopwatch();
 
-        //std::cout<<Stopwatch::hours<<":"<<Stopwatch::minutes<<":"<<Stopwatch::seconds<<"\n";
+        //std::cout<<Stopwatch::hours<<":"<<Stopwatch::minutes<<":"<<Stopwatch::seconds<<"\n";ù
 
         //update();           //funzione observer da definire
     }
