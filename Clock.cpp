@@ -3,6 +3,7 @@
 //
 
 #include "Clock.h"
+#include "Timer.h"
 
 Clock::Clock() {
     char *buffer=new char[80];//cambia in stringa

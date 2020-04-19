@@ -14,10 +14,10 @@
 
 class App : public wxApp{
 private:
-    Frame* frame1= nullptr;
+    Frame* mainFrame= nullptr;
 public:
     App();
-    ~App();
+    virtual ~App();
     bool OnInit();
 };
 

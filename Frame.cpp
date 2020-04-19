@@ -4,12 +4,27 @@
 
 #include "Frame.h"
 
+wxBEGIN_EVENT_TABLE(Frame,wxFrame)
+    EVT_BUTTON(1,SWButtonClicked)
+    EVT_BUTTON(2,CButtonClicked)
+wxEND_EVENT_TABLE()
+
+
 Frame::Frame() : wxFrame(nullptr,wxID_ANY,"TimerClockApp",wxPoint(50,50),wxSize(380,110)){
-    timerButton=new wxButton(this,wxID_ANY,"TIMER",wxPoint(10,10),wxSize(150,50));
-    clockButton=new wxButton(this,wxID_ANY,"CLOCK",wxPoint(200,10),wxSize(150,50));
+    stopwatchButton=new wxButton(this,1,"STOPWATCH",wxPoint(10,10),wxSize(150,50));
+    clockButton=new wxButton(this,2,"CLOCK",wxPoint(200,10),wxSize(150,50));
+}
+Frame::~Frame() {}
 
+void Frame::SWButtonClicked(wxCommandEvent &evt) {
+    swFrame=new SWFrame();
+    swFrame->Show();
+    evt.Skip();
 }
 
-Frame::~Frame() {
-
+void Frame::CButtonClicked(wxCommandEvent &evt) {
+    cFrame=new CFrame();
+    cFrame->Show();
+    evt.Skip();
 }
+

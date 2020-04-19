@@ -6,7 +6,8 @@ set(CMAKE_CXX_STANDARD 14)
 find_package(wxWidgets REQUIRED net gl core base)
 include(${wxWidgets_USE_FILE})
 
-set(SOURCE_FILES App.cpp App.h Frame.cpp Frame.h Clock.cpp Clock.h Stopwatch.cpp Stopwatch.h ) #aggiungere i file sorgente
+set(SOURCE_FILES App.cpp App.h Frame.cpp Frame.h Clock.cpp Clock.h Stopwatch.cpp Stopwatch.h CFrame.cpp CFrame.h
+        SWFrame.cpp SWFrame.h) #aggiungere i file sorgente
 
 add_executable(TimerClockApp ${SOURCE_FILES})
 add_subdirectory(test)
