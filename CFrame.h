@@ -21,6 +21,8 @@ private:
     char* buffer12h;
     time_t currentTime;
     CTimer* timer;
+    wxDECLARE_EVENT_TABLE();
+    void OnClose(wxCloseEvent& event); //funzione per stoppare il timer prima di chiudere la finestra
 
 public:
     CFrame();

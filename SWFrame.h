@@ -9,11 +9,24 @@
 #ifndef WX_PRECOMP
 #include <wx/wx.h>
 #endif
+#include <ctime>
+#include "SWPauseFrame.h"
+
+class SWPauseFrame;
 
 class SWFrame : public wxFrame{
+private:
+    wxTextCtrl* timeBox;
+    wxButton* startSWButton;
+    std::string stringTime;
+    time_t sw;
+    tm *swPtr;
+    SWPauseFrame* pauseFrame;
+    void SWButtonClickedStart(wxCommandEvent &evt);
 public:
     SWFrame();
     virtual ~SWFrame();
+    wxDECLARE_EVENT_TABLE();
 };
 
 
