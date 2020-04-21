@@ -12,6 +12,8 @@
 #include <ctime>
 #include "SWPauseFrame.h"
 
+class SWPauseFrame;
+
 class SWFrame : public wxFrame{
 private:
     wxTextCtrl* timeBox;
@@ -24,8 +26,6 @@ private:
 public:
     SWFrame();
     virtual ~SWFrame();
-
-
     wxDECLARE_EVENT_TABLE();
 };
 

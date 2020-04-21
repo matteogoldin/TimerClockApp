@@ -15,6 +15,9 @@
 #include "SWFrame.h"
 #include "SWContinueFrame.h"
 
+class SWContinueFrame;
+class SWFrame;
+
 class SWPauseFrame : public wxFrame{
 private:
     time_t sw;

@@ -4,6 +4,7 @@
 
 #ifndef TIMERCLOCKAPP_SWCONTINUEFRAME_H
 #define TIMERCLOCKAPP_SWCONTINUEFRAME_H
+
 #include <wx/wxprec.h>
 #ifndef WX_PRECOMP
 #include <wx/wx.h>
@@ -14,7 +15,8 @@
 #include "SWFrame.h"
 #include "SWPauseFrame.h"
 
-
+class SWFrame;
+class SWPauseFrame;
 
 class SWContinueFrame : public wxFrame{
 private:
