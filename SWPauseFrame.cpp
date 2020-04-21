@@ -32,6 +32,7 @@ void SWPauseFrame::OnClose(wxCloseEvent &event) {
 }
 
 void SWPauseFrame::SWButtonClickedPause(wxCommandEvent &evt) {
+    sw=timer->getSw();
     timer->Stop();
     Destroy();
     continueFrame=new SWContinueFrame(sw);

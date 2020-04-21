@@ -24,5 +24,3 @@ void SWFrame::SWButtonClickedStart(wxCommandEvent &evt) {
     pauseFrame->Show();
     evt.Skip();
     }
-
-

@@ -22,3 +22,7 @@ void SWTimer::Notify() {
     stringTime=std::to_string(swPtr->tm_hour)+":"+std::to_string(swPtr->tm_min)+":"+std::to_string(swPtr->tm_sec);
     timeBox->Replace(0,80,stringTime);
 }
+
+time_t SWTimer::getSw() const {
+    return sw;
+}

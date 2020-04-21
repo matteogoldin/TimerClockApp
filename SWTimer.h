@@ -24,6 +24,7 @@ public:
     virtual ~SWTimer();
 
     void Notify() override;
+    time_t getSw() const;
 };
 
 
