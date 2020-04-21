@@ -28,7 +28,6 @@ private:
     wxButton* clearButton;
     SWPauseFrame* pauseFrame;
     SWFrame* startFrame;
-    void OnClose(wxCloseEvent& event); //funzione per stoppare il timer prima di chiudere la finestra
     void SWButtonClickedContinue(wxCommandEvent &evt);
     void SWButtonClickedClear(wxCommandEvent &evt);
     wxDECLARE_EVENT_TABLE();

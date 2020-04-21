@@ -5,7 +5,6 @@
 #include "SWContinueFrame.h"
 
 wxBEGIN_EVENT_TABLE(SWContinueFrame, wxFrame)
-                EVT_CLOSE(SWContinueFrame::OnClose)
                 EVT_BUTTON(1000,SWButtonClickedContinue)
                 EVT_BUTTON(1001,SWButtonClickedClear)
 wxEND_EVENT_TABLE()
@@ -36,9 +35,5 @@ void SWContinueFrame::SWButtonClickedContinue(wxCommandEvent &evt) {
     Destroy();
     pauseFrame=new SWPauseFrame(sw);
     pauseFrame->Show();
-
-}
-
-void SWContinueFrame::OnClose(wxCloseEvent &event) {
 
 }
