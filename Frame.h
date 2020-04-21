@@ -12,20 +12,23 @@
 
 #include "SWFrame.h"
 #include "CFrame.h"
+#include "TFrame.h"
 
 
 class Frame: public wxFrame {
 private:
     wxButton* stopwatchButton;
     wxButton* clockButton;
+    wxButton* timerButton;
     SWFrame* swFrame;
     CFrame* cFrame;
+    TFrame* tFrame;
+    void SWButtonClicked(wxCommandEvent &evt);
+    void CButtonClicked(wxCommandEvent &evt);
+    void TButtonClicked(wxCommandEvent &evt);
 public:
     Frame();
     virtual ~Frame();
-
-    void SWButtonClicked(wxCommandEvent &evt);
-    void CButtonClicked(wxCommandEvent &evt);
     wxDECLARE_EVENT_TABLE();
 };
 

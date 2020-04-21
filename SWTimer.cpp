@@ -8,7 +8,7 @@
 SWTimer::SWTimer(wxTextCtrl* timeBox,time_t sw) {
     this->timeBox=timeBox;
     this->sw=sw;
-    tm* swPtr=gmtime(&sw);
+    swPtr=gmtime(&sw);
     stringTime=std::to_string(swPtr->tm_hour)+":"+std::to_string(swPtr->tm_min)+":"+std::to_string(swPtr->tm_sec);
 }
 
@@ -18,7 +18,7 @@ SWTimer::~SWTimer() {
 
 void SWTimer::Notify() {
     sw++;
-    tm* swPtr=gmtime(&sw);
+    swPtr=gmtime(&sw);
     stringTime=std::to_string(swPtr->tm_hour)+":"+std::to_string(swPtr->tm_min)+":"+std::to_string(swPtr->tm_sec);
     timeBox->Replace(0,80,stringTime);
 }

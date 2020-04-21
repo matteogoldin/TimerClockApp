@@ -11,7 +11,7 @@ wxBEGIN_EVENT_TABLE(SWPauseFrame, wxFrame)
 wxEND_EVENT_TABLE()
 
 SWPauseFrame::SWPauseFrame(time_t sw) : wxFrame(nullptr,wxID_ANY,"Stopwatch",wxPoint(50,50),wxSize(340,170)){
-    SetBackgroundColour(*wxCYAN);
+    SetBackgroundColour(*wxBLACK);
     this->sw=sw;
     swPtr=gmtime(&sw);
     stringTime=std::to_string(swPtr->tm_hour)+":"+std::to_string(swPtr->tm_min)+":"+std::to_string(swPtr->tm_sec);
