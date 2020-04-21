@@ -14,7 +14,6 @@
 #include "CFrame.h"
 #include "TFrame.h"
 
-
 class Frame: public wxFrame {
 private:
     wxButton* stopwatchButton;

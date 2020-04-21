@@ -11,10 +11,10 @@
 #endif
 
 #include "TFrame.h"
-#include "TTimer.h"
+#include "TContinueFrame.h"
 
 class TFrame;
-//class TContinueFrame;
+class TContinueFrame;
 
 class TPauseFrame : public wxFrame{
 private:
@@ -24,12 +24,13 @@ private:
     wxTextCtrl* timeBox;
     wxButton* pauseButton;
     wxButton* clearButton;
-    //TContinueFrame* continueFrame;
+    TContinueFrame* continueFrame;
     TFrame* startFrame;
-    TTimer* timer;
+    wxTimer* timer;
     void OnClose(wxCloseEvent& event); //funzione per stoppare il timer prima di chiudere la finestra
     void TButtonClickedPause(wxCommandEvent &evt);
     void TButtonClickedClear(wxCommandEvent &evt);
+    void OnTimer(wxTimerEvent &evt);
     wxDECLARE_EVENT_TABLE();
 public:
     explicit TPauseFrame(time_t time);

@@ -34,7 +34,7 @@ private:
     void SWButtonClickedClear(wxCommandEvent &evt);
     wxDECLARE_EVENT_TABLE();
 public:
-    SWPauseFrame(time_t sw);
+    explicit SWPauseFrame(time_t sw);
     virtual ~SWPauseFrame();
 };
 

@@ -9,7 +9,7 @@ wxBEGIN_EVENT_TABLE(SWFrame,wxFrame)
 wxEND_EVENT_TABLE()
 
 SWFrame::SWFrame() : wxFrame(nullptr,wxID_ANY,"Stopwatch",wxPoint(50,50),wxSize(340,170)){
-    SetBackgroundColour(*wxCYAN);
+    SetBackgroundColour(*wxBLACK);
     sw=0;
     swPtr=gmtime(&sw);
     stringTime=std::to_string(swPtr->tm_hour)+":"+std::to_string(swPtr->tm_min)+":"+std::to_string(swPtr->tm_sec);
@@ -19,11 +19,13 @@ SWFrame::SWFrame() : wxFrame(nullptr,wxID_ANY,"Stopwatch",wxPoint(50,50),wxSize(
     timeBox->SetFont(font);
     startSWButton=new wxButton(this,10,"START",wxPoint(85,70),wxSize(150,50));
 }
+
 SWFrame::~SWFrame() {}
 
 void SWFrame::SWButtonClickedStart(wxCommandEvent &evt) {
-    Destroy();
     pauseFrame=new SWPauseFrame(sw);
+    pauseFrame->SetPosition(GetPosition());
     pauseFrame->Show();
+    Destroy();
     evt.Skip();
-    }
+}

@@ -9,7 +9,6 @@
 #ifndef WX_PRECOMP
 #include <wx/wx.h>
 #endif
-
 #include <ctime>
 
 class SWTimer : public wxTimer{

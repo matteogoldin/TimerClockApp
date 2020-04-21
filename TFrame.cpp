@@ -15,20 +15,20 @@ wxBEGIN_EVENT_TABLE(TFrame,wxFrame)
 
 wxEND_EVENT_TABLE()
 
-TFrame::TFrame() : wxFrame(nullptr,wxID_ANY,"Stopwatch",wxPoint(50,50),wxSize(340,200)){
+TFrame::TFrame() : wxFrame(nullptr,wxID_ANY,"Timer",wxPoint(50,50),wxSize(340,200)){
     SetBackgroundColour(*wxBLACK);
     time=0;
     timePtr=gmtime(&time);
     hoursBox = new wxTextCtrl(this, wxID_ANY, "0", wxPoint(10,10), wxSize(80,50),
-                             wxTE_MULTILINE | wxTE_RICH, wxDefaultValidator, wxTextCtrlNameStr);
+                             wxTE_MULTILINE | wxTE_RICH | wxTE_READONLY, wxDefaultValidator, wxTextCtrlNameStr);
     colonBox1=new wxTextCtrl(this, wxID_ANY, ":", wxPoint(90,10), wxSize(30,50),
                              wxTE_MULTILINE | wxTE_RICH | wxTE_READONLY , wxDefaultValidator, wxTextCtrlNameStr);
     minutesBox = new wxTextCtrl(this, wxID_ANY, "0", wxPoint(120,10), wxSize(80,50),
-                             wxTE_MULTILINE | wxTE_RICH, wxDefaultValidator, wxTextCtrlNameStr);
+                             wxTE_MULTILINE | wxTE_RICH | wxTE_READONLY, wxDefaultValidator, wxTextCtrlNameStr);
     colonBox2=new wxTextCtrl(this, wxID_ANY, ":", wxPoint(200,10), wxSize(30,50),
                              wxTE_MULTILINE | wxTE_RICH | wxTE_READONLY , wxDefaultValidator, wxTextCtrlNameStr);
     secondsBox = new wxTextCtrl(this, wxID_ANY, "0", wxPoint(230,10), wxSize(80,50),
-                             wxTE_MULTILINE | wxTE_RICH, wxDefaultValidator, wxTextCtrlNameStr);
+                             wxTE_MULTILINE | wxTE_RICH | wxTE_READONLY, wxDefaultValidator, wxTextCtrlNameStr);
     startTButton=new wxButton(this,10,"START",wxPoint(85,105),wxSize(150,50));
     wxFont font(24,wxFONTFAMILY_TELETYPE,wxFONTSTYLE_NORMAL,wxFONTWEIGHT_BOLD,false);
     hoursBox->SetFont(font);
@@ -49,9 +49,10 @@ TFrame::~TFrame() {
 }
 
 void TFrame::TButtonClickedStart(wxCommandEvent &evt) {
-    Destroy();
     pauseFrame=new TPauseFrame(time);
+    pauseFrame->SetPosition(GetPosition());
     pauseFrame->Show();
+    Destroy();
     evt.Skip();
 }
 
@@ -59,6 +60,7 @@ void TFrame::UpHoursClicked(wxCommandEvent &evt) {
     time=time+3600;
     timePtr=gmtime(&time);
     hoursBox->Replace(0,80,std::to_string(timePtr->tm_hour));
+    evt.Skip();
 }
 
 void TFrame::DownHoursClicked(wxCommandEvent &evt) {
@@ -67,7 +69,7 @@ void TFrame::DownHoursClicked(wxCommandEvent &evt) {
         timePtr=gmtime(&time);
         hoursBox->Replace(0,80,std::to_string(timePtr->tm_hour));
     }
-
+    evt.Skip();
 }
 
 void TFrame::UpMinutesClicked(wxCommandEvent &evt) {
@@ -75,6 +77,7 @@ void TFrame::UpMinutesClicked(wxCommandEvent &evt) {
     timePtr=gmtime(&time);
     hoursBox->Replace(0,80,std::to_string(timePtr->tm_hour));
     minutesBox->Replace(0,80,std::to_string(timePtr->tm_min));
+    evt.Skip();
 }
 
 void TFrame::DownMinutesClicked(wxCommandEvent &evt) {
@@ -84,7 +87,7 @@ void TFrame::DownMinutesClicked(wxCommandEvent &evt) {
         hoursBox->Replace(0,80,std::to_string(timePtr->tm_hour));
         minutesBox->Replace(0,80,std::to_string(timePtr->tm_min));
     }
-
+    evt.Skip();
 }
 
 void TFrame::UpSecondsClicked(wxCommandEvent &evt) {
@@ -93,6 +96,7 @@ void TFrame::UpSecondsClicked(wxCommandEvent &evt) {
     hoursBox->Replace(0,80,std::to_string(timePtr->tm_hour));
     minutesBox->Replace(0,80,std::to_string(timePtr->tm_min));
     secondsBox->Replace(0,80,std::to_string(timePtr->tm_sec));
+    evt.Skip();
 }
 
 void TFrame::DownSecondsClicked(wxCommandEvent &evt) {
@@ -103,5 +107,5 @@ void TFrame::DownSecondsClicked(wxCommandEvent &evt) {
         minutesBox->Replace(0,80,std::to_string(timePtr->tm_min));
         secondsBox->Replace(0,80,std::to_string(timePtr->tm_sec));
     }
-
+    evt.Skip();
 }

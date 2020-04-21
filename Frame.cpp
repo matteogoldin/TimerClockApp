@@ -12,7 +12,7 @@ wxEND_EVENT_TABLE()
 
 
 Frame::Frame() : wxFrame(nullptr,wxID_ANY,"TimerClockApp",wxPoint(50,50),wxSize(380,170)){
-    SetBackgroundColour(*wxCYAN);
+    SetBackgroundColour(*wxBLACK);
     stopwatchButton=new wxButton(this,1,"STOPWATCH",wxPoint(10,10),wxSize(150,50));
     clockButton=new wxButton(this,2,"CLOCK",wxPoint(200,10),wxSize(150,50));
     timerButton=new wxButton(this,3,"TIMER",wxPoint(105,70),wxSize(150,50));

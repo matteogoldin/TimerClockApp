@@ -32,7 +32,7 @@ private:
     void SWButtonClickedClear(wxCommandEvent &evt);
     wxDECLARE_EVENT_TABLE();
 public:
-    SWContinueFrame(time_t sw);
+    explicit SWContinueFrame(time_t sw);
     virtual ~SWContinueFrame();
 };
 

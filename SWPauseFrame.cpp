@@ -32,21 +32,24 @@ SWPauseFrame::~SWPauseFrame() {
 void SWPauseFrame::OnClose(wxCloseEvent &event) {
     timer->Stop();
     Destroy();
+    event.Skip();
 }
 
 void SWPauseFrame::SWButtonClickedPause(wxCommandEvent &evt) {
     sw=timer->getSw();
     timer->Stop();
-    Destroy();
     continueFrame=new SWContinueFrame(sw);
+    continueFrame->SetPosition(GetPosition());
     continueFrame->Show();
+    Destroy();
     evt.Skip();
 }
 
 void SWPauseFrame::SWButtonClickedClear(wxCommandEvent &evt) {
     timer->Stop();
-    Destroy();
     startFrame=new SWFrame();
+    startFrame->SetPosition(GetPosition());
     startFrame->Show();
+    Destroy();
     evt.Skip();
 }

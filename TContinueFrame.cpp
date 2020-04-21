@@ -1,19 +1,19 @@
 //
-// Created by matte on 20/04/2020.
+// Created by matte on 21/04/2020.
 //
 
-#include "SWContinueFrame.h"
+#include "TContinueFrame.h"
 
-wxBEGIN_EVENT_TABLE(SWContinueFrame, wxFrame)
-                EVT_BUTTON(1000,SWButtonClickedContinue)
-                EVT_BUTTON(1001,SWButtonClickedClear)
+wxBEGIN_EVENT_TABLE(TContinueFrame, wxFrame)
+                EVT_BUTTON(1000,TButtonClickedContinue)
+                EVT_BUTTON(1001,TButtonClickedClear)
 wxEND_EVENT_TABLE()
 
-SWContinueFrame::SWContinueFrame(time_t sw) : wxFrame(nullptr,wxID_ANY,"Stopwatch",wxPoint(50,50),wxSize(340,170)){
+TContinueFrame::TContinueFrame(time_t time) : wxFrame(nullptr,wxID_ANY,"Timer",wxPoint(50,50),wxSize(340,170)){
     SetBackgroundColour(*wxBLACK);
-    this->sw=sw;
-    swPtr=gmtime(&sw);
-    stringTime=std::to_string(swPtr->tm_hour)+":"+std::to_string(swPtr->tm_min)+":"+std::to_string(swPtr->tm_sec);
+    this->time=time;
+    timePtr=gmtime(&time);
+    stringTime=std::to_string(timePtr->tm_hour)+":"+std::to_string(timePtr->tm_min)+":"+std::to_string(timePtr->tm_sec);
     timeBox = new wxTextCtrl(this, wxID_ANY, stringTime, wxPoint(10,10), wxSize(300,50),
                              wxTE_MULTILINE | wxTE_RICH | wxTE_READONLY, wxDefaultValidator, wxTextCtrlNameStr);
     wxFont font(24,wxFONTFAMILY_TELETYPE,wxFONTSTYLE_NORMAL,wxFONTWEIGHT_BOLD,false);
@@ -22,18 +22,18 @@ SWContinueFrame::SWContinueFrame(time_t sw) : wxFrame(nullptr,wxID_ANY,"Stopwatc
     clearButton=new wxButton(this,1001,"CLEAR",wxPoint(160,70),wxSize(150,50));
 }
 
-SWContinueFrame::~SWContinueFrame() {}
+TContinueFrame::~TContinueFrame() {}
 
-void SWContinueFrame::SWButtonClickedClear(wxCommandEvent &evt) {
-    startFrame=new SWFrame();
+void TContinueFrame::TButtonClickedClear(wxCommandEvent &evt) {
+    startFrame=new TFrame();
     startFrame->SetPosition(GetPosition());
     startFrame->Show();
     Destroy();
     evt.Skip();
 }
 
-void SWContinueFrame::SWButtonClickedContinue(wxCommandEvent &evt) {
-    pauseFrame=new SWPauseFrame(sw);
+void TContinueFrame::TButtonClickedContinue(wxCommandEvent &evt) {
+    pauseFrame = new TPauseFrame(time);
     pauseFrame->SetPosition(GetPosition());
     pauseFrame->Show();
     Destroy();

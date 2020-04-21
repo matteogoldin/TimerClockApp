@@ -7,10 +7,8 @@ wxBEGIN_EVENT_TABLE(CFrame, wxFrame)
                 EVT_CLOSE(CFrame::OnClose)
 wxEND_EVENT_TABLE()
 
-
-
 CFrame::CFrame() : wxFrame(nullptr,wxID_ANY,"Clock",wxPoint(50,50),wxSize(285,180)){
-    SetBackgroundColour(*wxCYAN);
+    SetBackgroundColour(*wxBLACK);
     char *buffer24h=new char[80];
     char *buffer12h=new char[80];
     time(&currentTime);
@@ -27,7 +25,8 @@ CFrame::CFrame() : wxFrame(nullptr,wxID_ANY,"Clock",wxPoint(50,50),wxSize(285,18
     timer->Start(1000,false);
 }
 CFrame::~CFrame() {
-    delete[] buffer12h,buffer24h;
+    delete[] buffer12h;
+    delete[] buffer24h;
 }
 
 void CFrame::OnClose(wxCloseEvent &event) {
