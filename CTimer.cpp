@@ -11,9 +11,7 @@ CTimer::CTimer(wxTextCtrl* dateBox24h,wxTextCtrl* dateBox12h,char* buffer24h,cha
     this->buffer12h=buffer12h;
 }
 
-CTimer::~CTimer() {
-
-}
+CTimer::~CTimer() {}
 
 void CTimer::Notify() {
     time(&currentTime);
