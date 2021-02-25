@@ -9,6 +9,7 @@
 #include <wx/wx.h>
 #endif
 #include "Frame.h"
+#include "test/lib/googletest/include/gtest/gtest_prod.h"
 
 class App : public wxApp{
 private:
@@ -17,6 +18,7 @@ public:
     App();
     virtual ~App();
     bool OnInit();
+    FRIEND_TEST(StopwatchTest,Initialization);
 };
 
 

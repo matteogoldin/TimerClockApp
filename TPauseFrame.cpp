@@ -13,6 +13,7 @@ wxEND_EVENT_TABLE()
 TPauseFrame::TPauseFrame(time_t time) : wxFrame(nullptr,wxID_ANY,"Timer",wxPoint(50,50),wxSize(340,200)){
     SetBackgroundColour(*wxBLACK);
     this->time=time;
+    observer=new TObserver(time);
     timePtr=gmtime(&time);
     stringTime=std::to_string(timePtr->tm_hour)+":"+std::to_string(timePtr->tm_min)+":"+std::to_string(timePtr->tm_sec);
     timeBox = new wxTextCtrl(this, wxID_ANY, stringTime,wxPoint(10,10), wxSize(300,50),
@@ -55,6 +56,7 @@ void TPauseFrame::TButtonClickedClear(wxCommandEvent &evt) {
 
 void TPauseFrame::OnTimer(wxTimerEvent &evt) {
     if(time>0) {
+        notifyObserver();
         time--;
         timePtr = gmtime(&time);
         stringTime = std::to_string(timePtr->tm_hour) + ":" + std::to_string(timePtr->tm_min) + ":" +
@@ -62,12 +64,16 @@ void TPauseFrame::OnTimer(wxTimerEvent &evt) {
         timeBox->Replace(0, 80, stringTime);
     } else{
         timer->Stop();
-        wxMessageBox( wxT("TIME OUT!"), wxT("Timer"), wxICON_INFORMATION);
+        notifyObserver();
         startFrame=new TFrame();
         startFrame->SetPosition(GetPosition());
         startFrame->Show();
         Destroy();
     }
     evt.Skip();
+}
+
+void TPauseFrame::notifyObserver() {
+    observer->update(time);
 }
 

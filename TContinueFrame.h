@@ -9,6 +9,8 @@
 #include <wx/wx.h>
 #endif
 #include "TFrame.h"
+
+
 class TFrame;
 class TPauseFrame;
 
@@ -26,10 +28,8 @@ private:
     void TButtonClickedClear(wxCommandEvent &evt);
 wxDECLARE_EVENT_TABLE();
 public:
-    TContinueFrame(time_t sw);
+    explicit TContinueFrame(time_t sw);
     virtual ~TContinueFrame();
-
-
 };
 
 

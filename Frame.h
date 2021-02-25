@@ -13,6 +13,7 @@
 #include "SWFrame.h"
 #include "CFrame.h"
 #include "TFrame.h"
+#include "test/lib/googletest/include/gtest/gtest_prod.h"
 
 class Frame: public wxFrame {
 private:
@@ -29,6 +30,7 @@ public:
     Frame();
     virtual ~Frame();
     wxDECLARE_EVENT_TABLE();
+    FRIEND_TEST(StopwatchTest,Initialization);
 };
 
 

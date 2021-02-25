@@ -26,8 +26,6 @@ private:
 public:
     CFrame();
     virtual ~CFrame();
-
-
 };
 
 

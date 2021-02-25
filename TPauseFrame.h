@@ -12,12 +12,15 @@
 
 #include "TFrame.h"
 #include "TContinueFrame.h"
+#include "TObserver.h"
 
 class TFrame;
 class TContinueFrame;
+class TObserver;
 
 class TPauseFrame : public wxFrame{
 private:
+    TObserver* observer;
     time_t time;
     tm *timePtr;
     std::string stringTime;
@@ -35,6 +38,7 @@ private:
 public:
     explicit TPauseFrame(time_t time);
     virtual ~TPauseFrame();
+    void notifyObserver();
 };
 
 
