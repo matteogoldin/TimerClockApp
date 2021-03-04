@@ -12,8 +12,6 @@
 #include <ctime>
 #include "SWPauseFrame.h"
 
-#include "test/lib/googletest/include/gtest/gtest_prod.h"
-
 class SWPauseFrame;
 
 class SWFrame : public wxFrame{
@@ -29,7 +27,6 @@ public:
     SWFrame();
     virtual ~SWFrame();
     wxDECLARE_EVENT_TABLE();
-    FRIEND_TEST(StopwatchTest,Initialization);
 };
 
 

@@ -10,16 +10,17 @@
 #include <wx/wx.h>
 #endif
 #include <ctime>
+#include "Observer.h"
 
 
-class TObserver {
+class TObserver: public Observer{
 private:
     time_t time;
     boolean endTimer;
 public:
     explicit TObserver(time_t time);
     virtual ~TObserver();
-    void update(time_t time);
+    void update(time_t time) override;
     void display();
     boolean getEndTimer() const;
 };

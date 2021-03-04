@@ -3,6 +3,7 @@
 //
 
 #include "SWContinueFrame.h"
+#include "TimeAdapter.h"
 
 wxBEGIN_EVENT_TABLE(SWContinueFrame, wxFrame)
                 EVT_BUTTON(1000,SWButtonClickedContinue)
@@ -13,7 +14,8 @@ SWContinueFrame::SWContinueFrame(time_t sw) : wxFrame(nullptr,wxID_ANY,"Stopwatc
     SetBackgroundColour(*wxBLACK);
     this->sw=sw;
     swPtr=gmtime(&sw);
-    stringTime=std::to_string(swPtr->tm_hour)+":"+std::to_string(swPtr->tm_min)+":"+std::to_string(swPtr->tm_sec);
+    stringTime=TimeAdapter::adaptTime(swPtr->tm_hour)+":"+TimeAdapter::adaptTime(swPtr->tm_min)+":"+
+            TimeAdapter::adaptTime(swPtr->tm_sec);
     timeBox = new wxTextCtrl(this, wxID_ANY, stringTime, wxPoint(10,10), wxSize(300,50),
                              wxTE_MULTILINE | wxTE_RICH | wxTE_READONLY, wxDefaultValidator, wxTextCtrlNameStr);
     wxFont font(24,wxFONTFAMILY_TELETYPE,wxFONTSTYLE_NORMAL,wxFONTWEIGHT_BOLD,false);

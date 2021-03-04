@@ -11,15 +11,14 @@
 
 class CTimer : public wxTimer{
 private:
-    wxTextCtrl* dBox24h;
-    wxTextCtrl* dBox12h;
+    wxTextCtrl* tBox24h;
+    wxTextCtrl* tBox12h;
     char* buffer24h;
     char* buffer12h;
     time_t currentTime;
 public:
-    CTimer(wxTextCtrl* dateBox24h,wxTextCtrl* dateBox12h,char* buffer24h,char* buffer12h);
+    CTimer(wxTextCtrl* timeBox24h,wxTextCtrl* timeBox12h,char* buffer24h,char* buffer12h);
     virtual ~CTimer();
-
     void Notify() override;
 };
 

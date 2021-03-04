@@ -9,7 +9,8 @@
 #include <string>
 
 class TimeAdapter {
-    static std::string adaptTime(std::string time);
+public:
+    static std::string adaptTime(int time);
 };
 
 

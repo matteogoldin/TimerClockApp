@@ -14,8 +14,8 @@
 
 class CFrame : public wxFrame{
 private:
-    wxTextCtrl* dateBox24h;
-    wxTextCtrl* dateBox12h;
+    wxTextCtrl* timeBox24h;
+    wxTextCtrl* timeBox12h;
     char* buffer24h; //utilizzo un buffer di char anziché una stringa per la funzione strftime
     char* buffer12h;
     time_t currentTime;

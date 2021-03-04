@@ -4,6 +4,7 @@
 #include "../TObserver.h"
 #include <gtest/gtest.h>
 
+
 class TObserverTest : public ::testing::Test{
 protected:
     TObserver* obs=new TObserver(0);

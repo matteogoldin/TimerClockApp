@@ -3,6 +3,8 @@
 //
 
 #include "TPauseFrame.h"
+#include "TimeAdapter.h"
+
 wxBEGIN_EVENT_TABLE(TPauseFrame, wxFrame)
     EVT_TIMER(9,OnTimer)
     EVT_CLOSE(TPauseFrame::OnClose)
@@ -15,7 +17,7 @@ TPauseFrame::TPauseFrame(time_t time) : wxFrame(nullptr,wxID_ANY,"Timer",wxPoint
     this->time=time;
     observer=new TObserver(time);
     timePtr=gmtime(&time);
-    stringTime=std::to_string(timePtr->tm_hour)+":"+std::to_string(timePtr->tm_min)+":"+std::to_string(timePtr->tm_sec);
+    stringTime=TimeAdapter::adaptTime(timePtr->tm_hour)+":"+TimeAdapter::adaptTime(timePtr->tm_min)+":"+TimeAdapter::adaptTime(timePtr->tm_sec);
     timeBox = new wxTextCtrl(this, wxID_ANY, stringTime,wxPoint(10,10), wxSize(300,50),
                              wxTE_MULTILINE | wxTE_RICH |wxTE_READONLY, wxDefaultValidator, wxTextCtrlNameStr);
     wxFont font(24,wxFONTFAMILY_TELETYPE,wxFONTSTYLE_NORMAL,wxFONTWEIGHT_BOLD,false);
@@ -56,15 +58,15 @@ void TPauseFrame::TButtonClickedClear(wxCommandEvent &evt) {
 
 void TPauseFrame::OnTimer(wxTimerEvent &evt) {
     if(time>0) {
-        notifyObserver();
+        notifyObservers();
         time--;
         timePtr = gmtime(&time);
-        stringTime = std::to_string(timePtr->tm_hour) + ":" + std::to_string(timePtr->tm_min) + ":" +
-                     std::to_string(timePtr->tm_sec);
+        stringTime = TimeAdapter::adaptTime(timePtr->tm_hour) + ":" +TimeAdapter::adaptTime(timePtr->tm_min) + ":" +
+                TimeAdapter::adaptTime(timePtr->tm_sec);
         timeBox->Replace(0, 80, stringTime);
     } else{
         timer->Stop();
-        notifyObserver();
+        notifyObservers();
         startFrame=new TFrame();
         startFrame->SetPosition(GetPosition());
         startFrame->Show();
@@ -73,7 +75,6 @@ void TPauseFrame::OnTimer(wxTimerEvent &evt) {
     evt.Skip();
 }
 
-void TPauseFrame::notifyObserver() {
+void TPauseFrame::notifyObservers() {
     observer->update(time);
 }
-

@@ -10,17 +10,18 @@
 #include <wx/wx.h>
 #endif
 
+#include <list>
 #include "TFrame.h"
 #include "TContinueFrame.h"
 #include "TObserver.h"
+#include "Subject.h"
 
 class TFrame;
 class TContinueFrame;
 class TObserver;
 
-class TPauseFrame : public wxFrame{
+class TPauseFrame : public wxFrame, public Subject{
 private:
-    TObserver* observer;
     time_t time;
     tm *timePtr;
     std::string stringTime;
@@ -30,6 +31,7 @@ private:
     TContinueFrame* continueFrame;
     TFrame* startFrame;
     wxTimer* timer;
+    TObserver* observer;
     void OnClose(wxCloseEvent& event); //funzione per stoppare il timer prima di chiudere la finestra
     void TButtonClickedPause(wxCommandEvent &evt);
     void TButtonClickedClear(wxCommandEvent &evt);
@@ -38,7 +40,9 @@ private:
 public:
     explicit TPauseFrame(time_t time);
     virtual ~TPauseFrame();
-    void notifyObserver();
+    void notifyObservers() override;
+    void attach(Observer *observer) override {};
+    void detach(Observer *observer) override {};
 };
 
 

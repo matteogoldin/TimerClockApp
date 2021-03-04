@@ -3,6 +3,7 @@
 //
 
 #include "TFrame.h"
+#include "TimeAdapter.h"
 
 wxBEGIN_EVENT_TABLE(TFrame,wxFrame)
                 EVT_BUTTON(10,TButtonClickedStart)
@@ -19,15 +20,15 @@ TFrame::TFrame() : wxFrame(nullptr,wxID_ANY,"Timer",wxPoint(50,50),wxSize(340,20
     SetBackgroundColour(*wxBLACK);
     time=0;
     timePtr=gmtime(&time);
-    hoursBox = new wxTextCtrl(this, wxID_ANY, "0", wxPoint(10,10), wxSize(80,50),
+    hoursBox = new wxTextCtrl(this, wxID_ANY, "00", wxPoint(10,10), wxSize(80,50),
                              wxTE_MULTILINE | wxTE_RICH | wxTE_READONLY, wxDefaultValidator, wxTextCtrlNameStr);
     colonBox1=new wxTextCtrl(this, wxID_ANY, ":", wxPoint(90,10), wxSize(30,50),
                              wxTE_MULTILINE | wxTE_RICH | wxTE_READONLY , wxDefaultValidator, wxTextCtrlNameStr);
-    minutesBox = new wxTextCtrl(this, wxID_ANY, "0", wxPoint(120,10), wxSize(80,50),
+    minutesBox = new wxTextCtrl(this, wxID_ANY, "00", wxPoint(120,10), wxSize(80,50),
                              wxTE_MULTILINE | wxTE_RICH | wxTE_READONLY, wxDefaultValidator, wxTextCtrlNameStr);
     colonBox2=new wxTextCtrl(this, wxID_ANY, ":", wxPoint(200,10), wxSize(30,50),
                              wxTE_MULTILINE | wxTE_RICH | wxTE_READONLY , wxDefaultValidator, wxTextCtrlNameStr);
-    secondsBox = new wxTextCtrl(this, wxID_ANY, "0", wxPoint(230,10), wxSize(80,50),
+    secondsBox = new wxTextCtrl(this, wxID_ANY, "00", wxPoint(230,10), wxSize(80,50),
                              wxTE_MULTILINE | wxTE_RICH | wxTE_READONLY, wxDefaultValidator, wxTextCtrlNameStr);
     startTButton=new wxButton(this,10,"START",wxPoint(85,105),wxSize(150,50));
     wxFont font(24,wxFONTFAMILY_TELETYPE,wxFONTSTYLE_NORMAL,wxFONTWEIGHT_BOLD,false);
@@ -59,7 +60,7 @@ void TFrame::TButtonClickedStart(wxCommandEvent &evt) {
 void TFrame::UpHoursClicked(wxCommandEvent &evt) {
     time=time+3600;
     timePtr=gmtime(&time);
-    hoursBox->Replace(0,80,std::to_string(timePtr->tm_hour));
+    hoursBox->Replace(0,80,TimeAdapter::adaptTime(timePtr->tm_hour));
     evt.Skip();
 }
 
@@ -67,7 +68,7 @@ void TFrame::DownHoursClicked(wxCommandEvent &evt) {
     if(time>=3600){
         time=time-3600;
         timePtr=gmtime(&time);
-        hoursBox->Replace(0,80,std::to_string(timePtr->tm_hour));
+        hoursBox->Replace(0,80,TimeAdapter::adaptTime(timePtr->tm_hour));
     }
     evt.Skip();
 }
@@ -75,8 +76,8 @@ void TFrame::DownHoursClicked(wxCommandEvent &evt) {
 void TFrame::UpMinutesClicked(wxCommandEvent &evt) {
     time=time+60;
     timePtr=gmtime(&time);
-    hoursBox->Replace(0,80,std::to_string(timePtr->tm_hour));
-    minutesBox->Replace(0,80,std::to_string(timePtr->tm_min));
+    hoursBox->Replace(0,80,TimeAdapter::adaptTime(timePtr->tm_hour));
+    minutesBox->Replace(0,80,TimeAdapter::adaptTime(timePtr->tm_min));
     evt.Skip();
 }
 
@@ -84,8 +85,8 @@ void TFrame::DownMinutesClicked(wxCommandEvent &evt) {
     if(time>=60){
         time=time-60;
         timePtr=gmtime(&time);
-        hoursBox->Replace(0,80,std::to_string(timePtr->tm_hour));
-        minutesBox->Replace(0,80,std::to_string(timePtr->tm_min));
+        hoursBox->Replace(0,80,TimeAdapter::adaptTime(timePtr->tm_hour));
+        minutesBox->Replace(0,80,TimeAdapter::adaptTime(timePtr->tm_min));
     }
     evt.Skip();
 }
@@ -93,9 +94,9 @@ void TFrame::DownMinutesClicked(wxCommandEvent &evt) {
 void TFrame::UpSecondsClicked(wxCommandEvent &evt) {
     time=time+1;
     timePtr=gmtime(&time);
-    hoursBox->Replace(0,80,std::to_string(timePtr->tm_hour));
-    minutesBox->Replace(0,80,std::to_string(timePtr->tm_min));
-    secondsBox->Replace(0,80,std::to_string(timePtr->tm_sec));
+    hoursBox->Replace(0,80,TimeAdapter::adaptTime(timePtr->tm_hour));
+    minutesBox->Replace(0,80,TimeAdapter::adaptTime(timePtr->tm_min));
+    secondsBox->Replace(0,80,TimeAdapter::adaptTime(timePtr->tm_sec));
     evt.Skip();
 }
 
@@ -103,9 +104,9 @@ void TFrame::DownSecondsClicked(wxCommandEvent &evt) {
     if(time>0){
         time=time-1;
         timePtr=gmtime(&time);
-        hoursBox->Replace(0,80,std::to_string(timePtr->tm_hour));
-        minutesBox->Replace(0,80,std::to_string(timePtr->tm_min));
-        secondsBox->Replace(0,80,std::to_string(timePtr->tm_sec));
+        hoursBox->Replace(0,80,TimeAdapter::adaptTime(timePtr->tm_hour));
+        minutesBox->Replace(0,80,TimeAdapter::adaptTime(timePtr->tm_min));
+        secondsBox->Replace(0,80,TimeAdapter::adaptTime(timePtr->tm_sec));
     }
     evt.Skip();
 }

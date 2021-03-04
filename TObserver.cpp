@@ -5,19 +5,18 @@
 #include "TObserver.h"
 
 
-TObserver::TObserver(time_t time): endTimer(false){
+TObserver::TObserver(time_t time){
     this->time=time;
+    endTimer=false;
 }
-
 TObserver::~TObserver() {}
 
 void TObserver::update(time_t time) {
     this->time=time;
-    if(time<=0){
+    if(time<=0)
+        endTimer = true;
+    if(endTimer==true)
         display();
-        endTimer=true;
-    } else
-        endTimer=false;
 }
 
 void TObserver::display() {
