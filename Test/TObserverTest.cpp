@@ -2,12 +2,13 @@
 // Created by matte on 05/08/2020.
 //
 #include "../TObserver.h"
+#include "../TPauseFrame.h"
 #include <gtest/gtest.h>
-
 
 class TObserverTest : public ::testing::Test{
 protected:
-    TObserver* obs=new TObserver(0);
+    TObserver* obs=new TObserver(1);
+    TPauseFrame* pf;
 };
 
 TEST_F(TObserverTest,TimeZero){
