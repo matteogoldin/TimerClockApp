@@ -23,6 +23,7 @@ public:
     void update(time_t time) override;
     void display();
     boolean getEndTimer() const;
+    time_t getTime() const;
 };
 
 

@@ -3,7 +3,6 @@
 //
 
 #include "TFrame.h"
-#include "TimeAdapter.h"
 
 wxBEGIN_EVENT_TABLE(TFrame,wxFrame)
                 EVT_BUTTON(10,TButtonClickedStart)
@@ -60,7 +59,7 @@ void TFrame::TButtonClickedStart(wxCommandEvent &evt) {
 void TFrame::UpHoursClicked(wxCommandEvent &evt) {
     time=time+3600;
     timePtr=gmtime(&time);
-    hoursBox->Replace(0,80,TimeAdapter::adaptTime(timePtr->tm_hour));
+    hoursBox->Replace(0,80,adaptTime(timePtr->tm_hour));
     evt.Skip();
 }
 
@@ -68,7 +67,7 @@ void TFrame::DownHoursClicked(wxCommandEvent &evt) {
     if(time>=3600){
         time=time-3600;
         timePtr=gmtime(&time);
-        hoursBox->Replace(0,80,TimeAdapter::adaptTime(timePtr->tm_hour));
+        hoursBox->Replace(0,80,adaptTime(timePtr->tm_hour));
     }
     evt.Skip();
 }
@@ -76,8 +75,8 @@ void TFrame::DownHoursClicked(wxCommandEvent &evt) {
 void TFrame::UpMinutesClicked(wxCommandEvent &evt) {
     time=time+60;
     timePtr=gmtime(&time);
-    hoursBox->Replace(0,80,TimeAdapter::adaptTime(timePtr->tm_hour));
-    minutesBox->Replace(0,80,TimeAdapter::adaptTime(timePtr->tm_min));
+    hoursBox->Replace(0,80,adaptTime(timePtr->tm_hour));
+    minutesBox->Replace(0,80,adaptTime(timePtr->tm_min));
     evt.Skip();
 }
 
@@ -85,8 +84,8 @@ void TFrame::DownMinutesClicked(wxCommandEvent &evt) {
     if(time>=60){
         time=time-60;
         timePtr=gmtime(&time);
-        hoursBox->Replace(0,80,TimeAdapter::adaptTime(timePtr->tm_hour));
-        minutesBox->Replace(0,80,TimeAdapter::adaptTime(timePtr->tm_min));
+        hoursBox->Replace(0,80,adaptTime(timePtr->tm_hour));
+        minutesBox->Replace(0,80,adaptTime(timePtr->tm_min));
     }
     evt.Skip();
 }
@@ -94,9 +93,9 @@ void TFrame::DownMinutesClicked(wxCommandEvent &evt) {
 void TFrame::UpSecondsClicked(wxCommandEvent &evt) {
     time=time+1;
     timePtr=gmtime(&time);
-    hoursBox->Replace(0,80,TimeAdapter::adaptTime(timePtr->tm_hour));
-    minutesBox->Replace(0,80,TimeAdapter::adaptTime(timePtr->tm_min));
-    secondsBox->Replace(0,80,TimeAdapter::adaptTime(timePtr->tm_sec));
+    hoursBox->Replace(0,80,adaptTime(timePtr->tm_hour));
+    minutesBox->Replace(0,80,adaptTime(timePtr->tm_min));
+    secondsBox->Replace(0,80,adaptTime(timePtr->tm_sec));
     evt.Skip();
 }
 
@@ -104,9 +103,9 @@ void TFrame::DownSecondsClicked(wxCommandEvent &evt) {
     if(time>0){
         time=time-1;
         timePtr=gmtime(&time);
-        hoursBox->Replace(0,80,TimeAdapter::adaptTime(timePtr->tm_hour));
-        minutesBox->Replace(0,80,TimeAdapter::adaptTime(timePtr->tm_min));
-        secondsBox->Replace(0,80,TimeAdapter::adaptTime(timePtr->tm_sec));
+        hoursBox->Replace(0,80,adaptTime(timePtr->tm_hour));
+        minutesBox->Replace(0,80,adaptTime(timePtr->tm_min));
+        secondsBox->Replace(0,80,adaptTime(timePtr->tm_sec));
     }
     evt.Skip();
 }

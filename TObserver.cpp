@@ -27,5 +27,9 @@ boolean TObserver::getEndTimer() const {
     return endTimer;
 }
 
+time_t TObserver::getTime() const {
+    return time;
+}
+
 
 

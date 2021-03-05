@@ -3,7 +3,6 @@
 //
 
 #include "TPauseFrame.h"
-#include "TimeAdapter.h"
 
 wxBEGIN_EVENT_TABLE(TPauseFrame, wxFrame)
     EVT_TIMER(9,OnTimer)
@@ -17,7 +16,7 @@ TPauseFrame::TPauseFrame(time_t time) : wxFrame(nullptr,wxID_ANY,"Timer",wxPoint
     this->time=time;
     observer=new TObserver(time);
     timePtr=gmtime(&time);
-    stringTime=TimeAdapter::adaptTime(timePtr->tm_hour)+":"+TimeAdapter::adaptTime(timePtr->tm_min)+":"+TimeAdapter::adaptTime(timePtr->tm_sec);
+    stringTime=adaptTime(timePtr->tm_hour)+":"+adaptTime(timePtr->tm_min)+":"+adaptTime(timePtr->tm_sec);
     timeBox = new wxTextCtrl(this, wxID_ANY, stringTime,wxPoint(10,10), wxSize(300,50),
                              wxTE_MULTILINE | wxTE_RICH |wxTE_READONLY, wxDefaultValidator, wxTextCtrlNameStr);
     wxFont font(24,wxFONTFAMILY_TELETYPE,wxFONTSTYLE_NORMAL,wxFONTWEIGHT_BOLD,false);
@@ -61,8 +60,7 @@ void TPauseFrame::OnTimer(wxTimerEvent &evt) {
         notifyObservers();
         time--;
         timePtr = gmtime(&time);
-        stringTime = TimeAdapter::adaptTime(timePtr->tm_hour) + ":" +TimeAdapter::adaptTime(timePtr->tm_min) + ":" +
-                TimeAdapter::adaptTime(timePtr->tm_sec);
+        stringTime = adaptTime(timePtr->tm_hour) + ":" +adaptTime(timePtr->tm_min) + ":"+adaptTime(timePtr->tm_sec);
         timeBox->Replace(0, 80, stringTime);
     } else{
         timer->Stop();

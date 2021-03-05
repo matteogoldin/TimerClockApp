@@ -3,7 +3,6 @@
 //
 
 #include "TContinueFrame.h"
-#include "TimeAdapter.h"
 
 wxBEGIN_EVENT_TABLE(TContinueFrame, wxFrame)
                 EVT_BUTTON(1000,TButtonClickedContinue)
@@ -14,7 +13,7 @@ TContinueFrame::TContinueFrame(time_t time) : wxFrame(nullptr,wxID_ANY,"Timer",w
     SetBackgroundColour(*wxBLACK);
     this->time=time;
     timePtr=gmtime(&time);
-    stringTime=TimeAdapter::adaptTime(timePtr->tm_hour)+":"+TimeAdapter::adaptTime(timePtr->tm_min)+":"+TimeAdapter::adaptTime(timePtr->tm_sec);
+    stringTime=adaptTime(timePtr->tm_hour)+":"+adaptTime(timePtr->tm_min)+":"+adaptTime(timePtr->tm_sec);
     timeBox = new wxTextCtrl(this, wxID_ANY, stringTime, wxPoint(10,10), wxSize(300,50),
                              wxTE_MULTILINE | wxTE_RICH | wxTE_READONLY, wxDefaultValidator, wxTextCtrlNameStr);
     wxFont font(24,wxFONTFAMILY_TELETYPE,wxFONTSTYLE_NORMAL,wxFONTWEIGHT_BOLD,false);

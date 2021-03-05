@@ -10,6 +10,7 @@
 #include <wx/wx.h>
 #endif
 #include "TPauseFrame.h"
+#include "Functions.h"
 class TPauseFrame;
 
 class TFrame : public wxFrame{

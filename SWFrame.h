@@ -11,6 +11,7 @@
 #endif
 #include <ctime>
 #include "SWPauseFrame.h"
+//#include "Functions.h"
 
 class SWPauseFrame;
 

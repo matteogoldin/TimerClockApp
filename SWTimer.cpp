@@ -3,7 +3,7 @@
 //
 
 #include "SWTimer.h"
-#include "TimeAdapter.h"
+#include "Functions.h"
 
 
 SWTimer::SWTimer(wxTextCtrl* timeBox,time_t sw) {
@@ -20,7 +20,7 @@ SWTimer::~SWTimer() {
 void SWTimer::Notify() {
     sw++;
     swPtr=gmtime(&sw);
-    stringTime=TimeAdapter::adaptTime(swPtr->tm_hour)+":"+TimeAdapter::adaptTime(swPtr->tm_min)+":"+TimeAdapter::adaptTime(swPtr->tm_sec);
+    stringTime=adaptTime(swPtr->tm_hour)+":"+adaptTime(swPtr->tm_min)+":"+adaptTime(swPtr->tm_sec);
     timeBox->Replace(0,80,stringTime);
 }
 
